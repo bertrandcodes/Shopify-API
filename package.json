@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,17 @@
   "bugs": {
     "url": "https://github.com/bertrandcodes/Shopify-API/issues"
   },
-  "homepage": "https://github.com/bertrandcodes/Shopify-API#readme"
+  "homepage": "https://github.com/bertrandcodes/Shopify-API#readme",
+  "dependencies": {
+    "@shopify/koa-shopify-auth": "^3.1.70",
+    "@shopify/koa-shopify-graphql-proxy": "^4.0.1",
+    "dotenv": "^8.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "koa": "^2.13.0",
+    "koa-session": "^6.0.0",
+    "next": "^9.5.3",
+    "ngrok": "3.3.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
 }
