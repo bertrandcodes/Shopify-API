@@ -1,7 +1,19 @@
-console.log('this is a script tag api')
-
 const header = $('#shopify-section-header').parent();
 
-console.log(header)
+let banner = $('<div>Hello! This Script tag is coming from the public folder</div>')
 
-header.prepend('<div>Hello this is Script tag is coming from the public folder</div>').css({ 'background-color': 'orange', 'text-align': 'center' })
+console.log(banner)
+
+
+const makeHeader = data => {
+    banner = $(`<div>${data}</div>`)
+    banner.css({ 'background-color': 'orange', 'text-align': 'center' })
+    header.prepend(banner)
+}
+
+fetch('https://cors-anywhere.herokuapp.com/https://8e135ea8749a.ngrok.io/api/products?shop=bertrands-testing-shop.myshopify.com')
+    .then(res => res.json())
+    .then(data => {
+        makeHeader(data.data)
+    })
+    .catch(err => console.log(err))

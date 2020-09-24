@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { EmptyState, Layout, Page } from '@shopify/polaris';
-import { ResourcePicker } from '@shopify/app-bridge-react';
+import { ResourcePicker, TitleBar } from '@shopify/app-bridge-react';
 import store from 'store-js';
 import ProductList from '../components/ProductList';
+import axios from 'axios';
 
 function Index() {
 
@@ -13,11 +14,27 @@ function Index() {
         const idsFromResources = resources.selection.map((product) => product.id);
         setModal({ open: false });
         store.set('ids', idsFromResources)
-        console.log(store.get('ids'))
+
+        const selectedProducts = resources.selection;
+
+        selectedProducts.map(product => makeApiCall(product))
+    }
+
+    async function makeApiCall(products) {
+        const url = '/api/products';
+        axios.post(url, products)
+            .then(result => console.log(result))
+            .catch(err => console.log(err))
     }
 
     return (
         <Page>
+            <TitleBar
+                primaryAction={{
+                    content: 'Select New Product',
+                    onAction: () => setModal({ open: true })
+                }}
+            />
             <ResourcePicker
                 resourceType="Product"
                 showVariants={false}
