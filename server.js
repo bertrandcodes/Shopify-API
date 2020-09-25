@@ -23,11 +23,7 @@ const server = new Koa();
 const router = new KoaRouter();
 
 // We can also use this with MongoDB
-const products = [
-    {
-        'image1': 'test'
-    }
-];
+const products = [];
 
 router.get('/api/products', async (ctx) => {
     try {
@@ -45,6 +41,15 @@ router.post('/api/products', koaBody(), async (ctx) => {
         const body = ctx.request.body;
         products.push(body)
         ctx.body = 'Item Added'
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+router.delete('/api/products', koaBody(), async (ctx) => {
+    try {
+        products = [];
+        ctx.body = 'All items deleted'
     } catch (error) {
         console.log(error)
     }
