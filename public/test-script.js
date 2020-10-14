@@ -14,18 +14,6 @@ function handler() {
     })
 }
 
-// const header = $('#shopify-section-header').parent();
-
-// let banner = $('<div>Hello! This Script tag is coming from the public folder</div>')
-
-// console.log(banner)
-
-// const makeHeader = data => {
-//     banner = $(`<div>${data}</div>`)
-//     banner.css({ 'background-color': 'orange', 'text-align': 'center' })
-//     header.prepend(banner)
-// }
-
 const body = $('body');
 
 body.css({
