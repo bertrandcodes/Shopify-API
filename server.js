@@ -25,6 +25,7 @@ const router = new KoaRouter();
 // We can also use this with MongoDB
 const products = [];
 
+// Routes that allow us to make calls through test-script
 router.get('/api/products', async (ctx) => {
     try {
         ctx.body = {
@@ -59,7 +60,7 @@ router.delete('/api/products', koaBody(), async (ctx) => {
 server.use(router.allowedMethods());
 server.use(router.routes());
 
-
+// Authentication function
 app.prepare().then(() => {
     server.use(session({ sameSite: 'none', secure: true }, server));
     server.keys = [SHOPIFY_API_SECRET_KEY];
